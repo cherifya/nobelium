@@ -1,5 +1,5 @@
 const BLOG = {
-  title: "Cherif Yaya's Space",
+  title: "Cherif Yaya",
   author: 'Cherif Yaya',
   email: 'hi@cherifyaya.space',
   link: 'https://cherifyaya.space',
