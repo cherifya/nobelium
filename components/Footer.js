@@ -1,5 +1,5 @@
 import { useConfig } from '@/lib/config'
-import Vercel from '@/components/Vercel'
+import SocialLinks from '@/components/SocialLinks'
 const Footer = ({ fullWidth }) => {
   const BLOG = useConfig()
 
@@ -18,7 +18,7 @@ const Footer = ({ fullWidth }) => {
           <p>
             © {BLOG.author} {from === y || !from ? y : `${from} - ${y}`}
           </p>
-          <Vercel />
+          <SocialLinks />
         </div>
       </div>
     </div>
