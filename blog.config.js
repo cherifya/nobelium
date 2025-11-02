@@ -20,12 +20,12 @@ const BLOG = {
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
   socialLink: 'https://twitter.com/cherifyaya',
   socialLinks: {
-    twitter: 'https://twitter.com/cherifyaya',
-    github: 'https://github.com/cherifyaya',
+    twitter: 'https://twitter.com/allad',
+    github: 'https://github.com/cherifya',
     linkedin: 'https://www.linkedin.com/in/cherifyaya/'
   },
   seo: {
-    keywords: ['Blog', 'Website', 'Notion'],
+    keywords: ['Blog', 'Website', 'Cherif Yaya', 'AI', 'Machine Learning', 'Senior IC Engineer', 'Mobile Development', 'Developer Experience', 'GenAI', 'LLM', 'ChatGPT', 'OpenAI', 'Google', 'Microsoft', 'Apple', 'Amazon', 'Facebook', 'Twitter', 'Instagram', 'YouTube', 'LinkedIn', 'GitHub', 'GitLab', 'Bitbucket', 'Docker', 'Kubernetes', 'Linux', 'Windows', 'MacOS', 'iOS', 'Android'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
