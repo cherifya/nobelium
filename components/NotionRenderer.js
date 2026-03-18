@@ -110,6 +110,10 @@ const mapPageUrl = id => `https://www.notion.so/${id.replace(/-/g, '')}`
  */
 export default function NotionRenderer (props) {
   const config = useConfig()
+  const {
+    enableInlineHtmlAttachmentPreview = false,
+    ...rendererProps
+  } = props
 
   const font = {
     'sans-serif': FONTS_SANS,
@@ -117,14 +121,14 @@ export default function NotionRenderer (props) {
   }[config.font]
 
   // Mark block types to be custom rendered by appending a suffix
-  if (props.recordMap) {
-    for (const { value: block } of Object.values(props.recordMap.block)) {
+  if (rendererProps.recordMap) {
+    for (const { value: block } of Object.values(rendererProps.recordMap.block)) {
       switch (block?.type) {
         case 'toggle':
           block.type += '_nobelium'
           break
         case 'file':
-          if (isHtmlFileBlock(block)) {
+          if (enableInlineHtmlAttachmentPreview && isHtmlFileBlock(block)) {
             block.type += '_nobelium'
           }
           break
@@ -144,7 +148,7 @@ export default function NotionRenderer (props) {
       <Renderer
         components={components}
         mapPageUrl={mapPageUrl}
-        {...props}
+        {...rendererProps}
       />
     </>
   )
