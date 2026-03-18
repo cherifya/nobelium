@@ -23,6 +23,7 @@ export default function Post (props) {
   const BLOG = useConfig()
   const { post, blockMap, emailHash, fullWidth = false } = props
   const { dark } = useTheme()
+  const postType = Array.isArray(post.type) ? post.type[0] : post.type
 
   return (
     <article className={cn('flex flex-col', fullWidth ? 'md:px-24' : 'items-center')}>
@@ -32,7 +33,7 @@ export default function Post (props) {
       )}>
         {post.title}
       </h1>
-      {post.type[0] !== 'Page' && (
+      {postType !== 'Page' && (
         <nav className={cn(
           'w-full flex mt-7 items-start text-gray-500 dark:text-gray-400',
           { 'max-w-2xl px-4': !fullWidth }

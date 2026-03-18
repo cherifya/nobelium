@@ -8,7 +8,6 @@ import { useConfig } from '@/lib/config'
 
 export async function getStaticProps () {
   const posts = await getAllPosts({ includePages: false })
-  console.log("posts", posts)
   const postsToShow = posts?.slice(0, clientConfig.postsPerPage) ?? []
   const totalPosts = posts?.length ?? 0
   const showNext = totalPosts > clientConfig.postsPerPage
