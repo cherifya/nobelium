@@ -4,9 +4,8 @@ import { NotionRenderer as Renderer } from 'react-notion-x'
 import { getTextContent } from 'notion-utils'
 import { FONTS_SANS, FONTS_SERIF } from '@/consts'
 import { useConfig } from '@/lib/config'
-import { isHtmlFileBlock } from '@/lib/notion/file'
 import Toggle from '@/components/notion-blocks/Toggle'
-import File from '@/components/notion-blocks/File'
+import Link from '@/components/notion-blocks/Link'
 
 // Lazy-load some heavy components & override the renderers of some block types
 const components = {
@@ -95,8 +94,7 @@ const components = {
 
   toggle_nobelium: ({ block, children }) => (
     <Toggle block={block}>{children}</Toggle>
-  ),
-  file_nobelium: ({ block }) => <File block={block} />
+  )
 }
 
 const mapPageUrl = id => `https://www.notion.so/${id.replace(/-/g, '')}`
@@ -127,13 +125,21 @@ export default function NotionRenderer (props) {
         case 'toggle':
           block.type += '_nobelium'
           break
-        case 'file':
-          if (enableInlineHtmlAttachmentPreview && isHtmlFileBlock(block)) {
-            block.type += '_nobelium'
-          }
+        case 'file_nobelium':
+          block.type = 'file'
           break
       }
     }
+  }
+
+  const rendererComponents = {
+    ...components,
+    Link: linkProps => (
+      <Link
+        {...linkProps}
+        enableInlineHtmlAttachmentPreview={enableInlineHtmlAttachmentPreview}
+      />
+    )
   }
 
   return (
@@ -146,7 +152,7 @@ export default function NotionRenderer (props) {
         `}
       </style>
       <Renderer
-        components={components}
+        components={rendererComponents}
         mapPageUrl={mapPageUrl}
         {...rendererProps}
       />
